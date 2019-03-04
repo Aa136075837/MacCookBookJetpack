@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         mSearch.setOnClickListener {
             val keyword = mMainEt.text.toString().trim()
             if (keyword.isEmpty()) {
-                toast("关键字不能为空")
+                toast("搜索内容不能为空")
             } else {
                 val intent = Intent(this, SearchResultActivity::class.java)
                 intent.putExtra(SearchResultActivity.KEYWORD_KEY, keyword)
