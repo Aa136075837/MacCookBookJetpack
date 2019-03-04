@@ -1,10 +1,12 @@
 package com.cmft.macjetpackdemo.ui
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.cmft.macjetpackdemo.R
-import com.cmft.macjetpackdemo.ui.detail.DetailActivity
+import com.cmft.macjetpackdemo.ui.detail.SearchResultActivity
+import com.cmft.macjetpackdemo.util.setFullScreen
+import com.cmft.macjetpackdemo.util.toast
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -12,10 +14,17 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setFullScreen()
 
         mSearch.setOnClickListener {
-            val intent = Intent(this, DetailActivity::class.java)
-            startActivity(intent)
+            val keyword = mMainEt.text.toString().trim()
+            if (keyword.isEmpty()) {
+                toast("关键字不能为空")
+            } else {
+                val intent = Intent(this, SearchResultActivity::class.java)
+                intent.putExtra(SearchResultActivity.KEYWORD_KEY, keyword)
+                startActivity(intent)
+            }
         }
     }
 

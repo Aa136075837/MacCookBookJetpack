@@ -1,6 +1,6 @@
 package com.cmft.macjetpackdemo.net
 
-import android.util.Log
+import com.orhanobut.logger.Logger
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -12,7 +12,7 @@ object ServiceCreator {
 
     private val client = OkHttpClient.Builder()
         .addInterceptor(HttpLoggingInterceptor(HttpLoggingInterceptor.Logger {
-            Log.d("MacCookHttp :: ", it)
+            Logger.d(it)
         }).setLevel(HttpLoggingInterceptor.Level.BODY))
         .build()
 

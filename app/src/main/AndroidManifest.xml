@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
+            android:name=".App"
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
@@ -12,6 +13,8 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
         <activity android:name=".ui.detail.DetailActivity">
+        </activity>
+        <activity android:name=".ui.detail.SearchResultActivity">
         </activity>
         <activity android:name=".ui.MainActivity">
             <intent-filter>
