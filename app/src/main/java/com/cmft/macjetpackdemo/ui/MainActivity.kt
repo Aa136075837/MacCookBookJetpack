@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.cmft.macjetpackdemo.R
-import com.cmft.macjetpackdemo.ui.detail.SearchResultActivity
+import com.cmft.macjetpackdemo.ui.search.SearchResultActivity
 import com.cmft.macjetpackdemo.util.setFullScreen
 import com.cmft.macjetpackdemo.util.toast
 import kotlinx.android.synthetic.main.activity_main.*

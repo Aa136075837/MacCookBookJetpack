@@ -1,4 +1,4 @@
-package com.cmft.macjetpackdemo.ui.detail
+package com.cmft.macjetpackdemo.ui.search
 
 import android.graphics.Rect
 import android.os.Bundle
@@ -9,14 +9,13 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
 import com.cmft.macjetpackdemo.R
 import com.cmft.macjetpackdemo.net.Status
-import com.cmft.macjetpackdemo.ui.SearchResultAdapter
 import com.cmft.macjetpackdemo.util.InjectUtil
 import com.cmft.macjetpackdemo.util.toast
 import kotlinx.android.synthetic.main.activity_search_result.*
 
 class SearchResultActivity : AppCompatActivity() {
 
-    lateinit var viewModel: DetailModel
+    lateinit var viewModel: SearchModel
     private lateinit var searchResultAdapter: SearchResultAdapter
 
     companion object {
@@ -27,8 +26,8 @@ class SearchResultActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search_result)
 
-        viewModel = ViewModelProviders.of(this, InjectUtil.getDetailModelFactory())
-            .get(DetailModel::class.java)
+        viewModel = ViewModelProviders.of(this, InjectUtil.getSearchModelFactory())
+            .get(SearchModel::class.java)
         initAdapter()
         initData()
     }

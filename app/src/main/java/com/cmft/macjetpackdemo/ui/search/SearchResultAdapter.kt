@@ -1,4 +1,4 @@
-package com.cmft.macjetpackdemo.ui
+package com.cmft.macjetpackdemo.ui.search
 
 import android.content.Context
 import android.content.Intent
@@ -40,7 +40,7 @@ class SearchResultAdapter : RecyclerView.Adapter<SearchResultAdapter.SearchResul
 
             holder.itemView.setOnClickListener {
                 val intent = Intent(mContext, DetailActivity::class.java)
-                intent.putExtra(DetailActivity.DETAIL_CLASSID, classid)
+                intent.putExtra(DetailActivity.DETAIL_CLASSID, id)
                 mContext.startActivity(intent)
             }
         }
