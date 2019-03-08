@@ -3,7 +3,7 @@ package com.cmft.macjetpackdemo.net
 import com.cmft.macjetpackdemo.data.model.BaseModel
 import com.cmft.macjetpackdemo.data.model.DetailResult
 import com.cmft.macjetpackdemo.data.model.SearchResult
-import com.cmft.macjetpackdemo.net.api.SearchApi
+import com.cmft.macjetpackdemo.net.cookapi.SearchApi
 import retrofit2.Callback
 
 class MacCookNetWork private constructor() {
