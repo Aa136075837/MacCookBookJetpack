@@ -13,6 +13,7 @@ class DetailActivity : AppCompatActivity() {
 
     companion object {
         const val DETAIL_CLASSID = "detail_classid_key"
+        const val DETAIL_NAME = "detail_name_key"
     }
 
     private var detailModel: DetailModel? = null
@@ -22,11 +23,17 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
         val id = intent.getStringExtra(DETAIL_CLASSID)
+        val name = intent.getStringExtra(DETAIL_NAME)
         detailModel = ViewModelProviders.of(this, InjectUtil.getDetailModelFactory()).get(DetailModel::class.java)
-
+        initToolbar(name)
         detailAdapter = DetailAdapter()
         mDetailRv.adapter = detailAdapter
         initData(id)
+    }
+
+    private fun initToolbar(name: String) {
+        mDetailToolbar.title = name
+        mDetailToolbar.navigationIcon
     }
 
     private fun initData(id: String) {
@@ -34,15 +41,8 @@ class DetailActivity : AppCompatActivity() {
         liveData?.observe(this, Observer {
             if (it.status == Status.SUCCESS) {
                 it.data?.result?.run {
-                    mFoodNameTv.text = name
-                    val sb = StringBuffer()
-                    material?.forEach {
-                        sb.append("${it.mname} + ${it.amount} 、")
-                    }
-
-                    mDetailMaterialTv.text = sb.toString()
                     if (!process.isNullOrEmpty()) {
-                        detailAdapter.setData(process)
+                        detailAdapter.setData(it.data.result)
                     }
                 }
             }

@@ -19,9 +19,9 @@
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:paddingLeft="20dp"
-            android:paddingTop="1dp"
-            android:paddingRight="1dp"
-            android:paddingBottom="1dp"
+            android:paddingTop="2dp"
+            android:paddingRight="2dp"
+            android:paddingBottom="2dp"
             android:background="@drawable/main_search_bg_shape"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent">

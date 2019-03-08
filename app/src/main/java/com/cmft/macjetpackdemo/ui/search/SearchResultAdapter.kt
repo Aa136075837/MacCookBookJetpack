@@ -41,6 +41,7 @@ class SearchResultAdapter : RecyclerView.Adapter<SearchResultAdapter.SearchResul
             holder.itemView.setOnClickListener {
                 val intent = Intent(mContext, DetailActivity::class.java)
                 intent.putExtra(DetailActivity.DETAIL_CLASSID, id)
+                intent.putExtra(DetailActivity.DETAIL_NAME, name)
                 mContext.startActivity(intent)
             }
         }
