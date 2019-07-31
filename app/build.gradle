@@ -4,10 +4,12 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+def qmui_arch_version = '0.6.1'
+
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.cmft.macjetpackdemo"
+        applicationId "com.mac.macjetpackdemo"
         minSdkVersion 15
         targetSdkVersion 28
         versionCode 1
@@ -39,6 +41,10 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
     //room
     implementation "android.arch.persistence.room:runtime:1.1.1"
+    implementation 'com.google.android.material:material:1.0.0-rc01'
+    implementation 'com.qmuiteam:qmui:1.4.0'
+    implementation "com.qmuiteam:arch:$qmui_arch_version"
+    kapt "com.qmuiteam:arch-compiler:$qmui_arch_version" // use annotationProcessor if java
     implementation 'com.orhanobut:logger:2.2.0'
     annotationProcessor "android.arch.persistence.room:compiler:1.1.1"
     testImplementation 'junit:junit:4.12'

@@ -13,6 +13,7 @@
             android:paddingTop="3dp"
             android:paddingBottom="3dp"
             android:paddingLeft="10dp"
+            android:visibility="gone"
             android:textSize="20sp"
             android:textColor="@android:color/black"
             app:layout_constraintTop_toBottomOf="@+id/mDetailToolbar"/>
@@ -22,6 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintLeft_toLeftOf="parent"
+            android:visibility="gone"
             app:layout_constraintTop_toBottomOf="@+id/mFoodNameTv"
             android:minHeight="150dp"/>
 
