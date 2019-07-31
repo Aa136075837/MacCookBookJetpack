@@ -31,7 +31,7 @@ class DetailAdapter : RecyclerView.Adapter<DetailAdapter.DetailHolder>() {
         when (position) {
             0 -> {
                 mData?.run {
-//                    holder.mFoodName.text = name
+                    //                    holder.mFoodName.text = name
                     holder.mFoodContent.text = content
 //                    Glide.with(mContext)
 //                        .load(if (pic.isEmpty()) "" else pic)
@@ -54,11 +54,21 @@ class DetailAdapter : RecyclerView.Adapter<DetailAdapter.DetailHolder>() {
                         holder.imageView
                     )
 
-                    holder.textView.text = "$position . $pcontent"
+                    holder.textView.text = "$position . ${removeBrSign(pcontent)}"
                 }
             }
         }
 
+    }
+
+    private fun removeBrSign(str: String): String {
+        var result: String
+        if (str.contains("<br />")) {
+            result = str.replace("<br />", "")
+        } else {
+            result = str
+        }
+        return result
     }
 
     override fun getItemViewType(position: Int): Int {
