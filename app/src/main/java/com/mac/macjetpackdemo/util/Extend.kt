@@ -10,6 +10,7 @@ import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.qmuiteam.qmui.widget.QMUIEmptyView
 
 fun Fragment.toast(msg: String?) = Toast.makeText(activity, msg, Toast.LENGTH_SHORT).show()
 
@@ -126,4 +127,8 @@ fun Context.px2dip(px: Int): Int {
 
 fun Context.sp2px(sp: Int): Int {
     return (TypedValue.applyDimension(2, sp.toFloat(), resources.getDisplayMetrics()) + 0.5f).toInt()
+}
+
+fun QMUIEmptyView.show(boolean: Boolean, title: String) {
+    show(boolean, title, null, null, null)
 }

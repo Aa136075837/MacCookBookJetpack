@@ -45,11 +45,14 @@ class SearchResultActivity : BaseActivity() {
     }
 
     private fun initData() {
+        mSearchEmpty.show(true, "正在加载...", null, null, null)
+
         val liveData = viewModel.getSearchDetail(intent.getStringExtra(KEYWORD_KEY))
 
         liveData.observe(this, Observer {
             if (it.status == Status.SUCCESS) {
                 it.data?.run {
+                    mSearchEmpty.visibility = View.GONE
                     searchResultAdapter.setData(result.list)
                 }
             } else if (it.status == Status.ERROR) {

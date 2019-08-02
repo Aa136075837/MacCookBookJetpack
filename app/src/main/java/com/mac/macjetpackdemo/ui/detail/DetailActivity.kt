@@ -1,6 +1,7 @@
 package com.mac.macjetpackdemo.ui.detail
 
 import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
@@ -38,6 +39,8 @@ class DetailActivity : BaseActivity() {
     }
 
     private fun initData(id: String) {
+        mDetailEmpty.show(true, "正在加载...", null, null, null)
+
         val liveData = detailModel?.getDetailById(id)
         liveData?.observe(this, Observer {
             if (it.status == Status.SUCCESS) {
@@ -45,6 +48,7 @@ class DetailActivity : BaseActivity() {
                     if (!process.isNullOrEmpty()) {
                         detailAdapter.setData(it.data.result)
                         Glide.with(this@DetailActivity).load(it.data.result.pic).into(mTopBg)
+                        mDetailEmpty.visibility = View.GONE
                     }
                 }
             }

@@ -48,4 +48,14 @@
             tools:listitem="@layout/item_detail_proces"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
+
+    <com.qmuiteam.qmui.widget.QMUIEmptyView
+            android:id="@+id/mDetailEmpty"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="?attr/qmui_topbar_height"
+            android:background="@color/qmui_config_color_white"
+            app:qmui_title_text="正在加载..."
+            app:qmui_detail_text="正在加载..."
+            android:fitsSystemWindows="true"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

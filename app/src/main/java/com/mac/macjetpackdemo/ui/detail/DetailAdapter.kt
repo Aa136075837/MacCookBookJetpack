@@ -62,13 +62,11 @@ class DetailAdapter : RecyclerView.Adapter<DetailAdapter.DetailHolder>() {
     }
 
     private fun removeBrSign(str: String): String {
-        var result: String
-        if (str.contains("<br />")) {
-            result = str.replace("<br />", "")
+        return if (str.contains("<br />")) {
+            str.replace("<br />", "")
         } else {
-            result = str
+            str
         }
-        return result
     }
 
     override fun getItemViewType(position: Int): Int {
