@@ -1,8 +1,6 @@
 package com.mac.macjetpackdemo.net.cookapi
 
-import com.mac.macjetpackdemo.data.model.BaseModel
-import com.mac.macjetpackdemo.data.model.DetailResult
-import com.mac.macjetpackdemo.data.model.SearchResult
+import com.mac.macjetpackdemo.data.model.*
 import com.mac.macjetpackdemo.util.MacCookConstant
 import retrofit2.Call
 import retrofit2.http.GET
@@ -24,4 +22,17 @@ interface SearchApi {
         @Query("id") id: String,
         @Query("appkey") appkey: String = MacCookConstant.JDCLOUD_KEY
     ): Call<BaseModel<DetailResult>>
+
+    @GET("recipe_class")
+    fun getType(
+        @Query("appkey") appkey: String = MacCookConstant.JDCLOUD_KEY
+    ): Call<BaseModel<TypeResult>>
+
+    @GET("byclass")
+    fun getTypeDetail(
+        @Query("classid") classid: String,
+        @Query("start") start: String,
+        @Query("num") num: String,
+        @Query("appkey") appkey: String = MacCookConstant.JDCLOUD_KEY
+    ): Call<BaseModel<TypeDetail>>
 }

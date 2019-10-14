@@ -10,11 +10,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.mac.macjetpackdemo.R
+import com.mac.macjetpackdemo.data.model.DetailResult
 import com.mac.macjetpackdemo.data.model.SearchResult
 import com.mac.macjetpackdemo.ui.detail.DetailActivity
 
 class SearchResultAdapter : RecyclerView.Adapter<SearchResultAdapter.SearchResultHolder>() {
-    private var data: List<SearchResult.ResultX.X>? = null
+    private var data: List<DetailResult.Result>? = null
     private lateinit var mContext: Context
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchResultHolder {
@@ -47,7 +48,7 @@ class SearchResultAdapter : RecyclerView.Adapter<SearchResultAdapter.SearchResul
         }
     }
 
-    fun setData(data: List<SearchResult.ResultX.X>) {
+    fun setData(data: List<DetailResult.Result>) {
         this.data = data
         notifyDataSetChanged()
     }

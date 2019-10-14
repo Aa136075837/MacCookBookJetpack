@@ -1,8 +1,6 @@
 package com.mac.macjetpackdemo.net
 
-import com.mac.macjetpackdemo.data.model.BaseModel
-import com.mac.macjetpackdemo.data.model.DetailResult
-import com.mac.macjetpackdemo.data.model.SearchResult
+import com.mac.macjetpackdemo.data.model.*
 import com.mac.macjetpackdemo.net.cookapi.SearchApi
 import retrofit2.Callback
 
@@ -15,6 +13,11 @@ class MacCookNetWork private constructor() {
 
     fun getCookDetail(id: String, callback: Callback<BaseModel<DetailResult>>) =
         searchApi.getDetailById(id).enqueue(callback)
+
+    fun getType(callback: Callback<BaseModel<TypeResult>>) = searchApi.getType().enqueue(callback)
+
+    fun getTypeDetail(classId: String, start: String, num: String, callback: Callback<BaseModel<TypeDetail>>) =
+        searchApi.getTypeDetail(classId, start, num).enqueue(callback)
 
     companion object {
         private var netWork: MacCookNetWork? = null

@@ -6,21 +6,7 @@ data class SearchResult(
     val status: String
 ) {
     data class ResultX(
-        val list: List<X>,
+        val list: List<DetailResult.Result>,
         val num: String
-    ) {
-        data class X(
-            val classid: String,
-            val content: String,
-            val cookingtime: String,
-            val id: String,
-            val material: List<Material>,
-            val name: String,
-            val peoplenum: String,
-            val pic: String,
-            val preparetime: String,
-            val process: List<Proces>,
-            val tag: String
-        )
-    }
+    )
 }

@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.mac.macjetpackdemo.R
 import com.mac.macjetpackdemo.ui.search.SearchResultActivity
+import com.mac.macjetpackdemo.ui.type.TypeActivity
 import com.mac.macjetpackdemo.util.setFullScreen
 import com.mac.macjetpackdemo.util.toast
 import kotlinx.android.synthetic.main.activity_main.*
@@ -25,6 +26,11 @@ class MainActivity : AppCompatActivity() {
                 intent.putExtra(SearchResultActivity.KEYWORD_KEY, keyword)
                 startActivity(intent)
             }
+        }
+
+        mBtn.setOnClickListener {
+            val intent = Intent(this, TypeActivity::class.java)
+            startActivity(intent)
         }
     }
 
