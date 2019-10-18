@@ -35,7 +35,7 @@ class SearchResultAdapter : RecyclerView.Adapter<SearchResultAdapter.SearchResul
             holder.mFitNum.text = peoplenum
             holder.mCookTime.text = cookingtime
             Glide.with(mContext)
-                .load(if (pic.isEmpty()) "" else pic)
+                .load(if (pic?.isEmpty()!!) "" else pic)
                 .placeholder(R.drawable.default_image)
                 .into(holder.mItemIv)
 

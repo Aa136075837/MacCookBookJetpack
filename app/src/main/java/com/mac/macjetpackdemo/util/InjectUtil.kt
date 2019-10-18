@@ -4,6 +4,7 @@ import com.mac.macjetpackdemo.data.DetailRepository
 import com.mac.macjetpackdemo.data.SearchRepository
 import com.mac.macjetpackdemo.data.TypeRepository
 import com.mac.macjetpackdemo.data.db.DetailDao
+import com.mac.macjetpackdemo.data.db.MacCookDatabase
 import com.mac.macjetpackdemo.data.db.TypeDao
 import com.mac.macjetpackdemo.net.MacCookNetWork
 import com.mac.macjetpackdemo.ui.detail.DetailModelFactory
@@ -15,7 +16,7 @@ object InjectUtil {
 
     private fun getDetailRepository() = DetailRepository.getInstance(DetailDao(), MacCookNetWork.getInstance())
 
-    private fun getTypeRepository() = TypeRepository.getInstance(TypeDao(), MacCookNetWork.getInstance())
+    private fun getTypeRepository() = TypeRepository.getInstance(MacCookDatabase, MacCookNetWork.getInstance())
 
     fun getSearchModelFactory() = SearchModelFactory(getSearchRepository())
 

@@ -1,13 +1,21 @@
 package com.mac.macjetpackdemo.data.model
 
+import androidx.room.Embedded
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "category")
 data class TypeDetail(
-    val msg: String,
-    val result: Result,
-    val status: String
+    @PrimaryKey(autoGenerate = true)
+    var id: Long,
+    var msg: String? = null,
+    @Embedded(prefix = "group_")
+    var result: Result? = null,
+    var status: String? = null
 )
 
 data class Result(
-    val list: List<DetailResult.Result>,
-    val num: String
+    var list: List<DetailResult.Result>? = null,
+    var num: String? = null
 )
 

@@ -6,13 +6,12 @@
               android:layout_height="match_parent">
 
     <TextView
-            android:id="@+id/item_type_tv"
-            android:layout_width="match_parent"
+            android:id="@+id/item_child_tv"
+            android:layout_width="wrap_content"
             tools:text="减肥"
-            android:gravity="center"
-            android:textSize="17sp"
-            android:textStyle="bold"
-            android:padding="8dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingLeft="20dp"
             android:layout_height="match_parent"/>
 
 </LinearLayout>

@@ -20,16 +20,22 @@
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
+        <ExpandableListView
+                android:id="@+id/mExListView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+        </ExpandableListView>
     </LinearLayout>
 
-    <!--<com.qmuiteam.qmui.widget.QMUIEmptyView-->
-    <!--android:id="@+id/mSearchEmpty"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:layout_marginTop="?attr/qmui_topbar_height"-->
-    <!--android:background="@color/qmui_config_color_white"-->
-    <!--app:qmui_title_text="正在加载..."-->
-    <!--app:qmui_detail_text="正在加载..."-->
-    <!--android:fitsSystemWindows="true"/>-->
+    <com.qmuiteam.qmui.widget.QMUIEmptyView
+            android:id="@+id/mTypeEmpty"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="?attr/qmui_topbar_height"
+            android:background="@color/qmui_config_color_white"
+            app:qmui_title_text="正在加载..."
+            app:qmui_detail_text="正在加载..."
+            android:fitsSystemWindows="true"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

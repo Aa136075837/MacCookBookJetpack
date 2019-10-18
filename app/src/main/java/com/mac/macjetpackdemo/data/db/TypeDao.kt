@@ -1,4 +1,5 @@
 package com.mac.macjetpackdemo.data.db
 
-class TypeDao {
+interface TypeDao {
+    fun insertTypeList()
 }
