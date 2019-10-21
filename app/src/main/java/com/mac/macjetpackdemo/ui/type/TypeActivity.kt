@@ -32,8 +32,7 @@ class TypeActivity : BaseActivity() {
         liveData?.observe(this, Observer {
             mTypeEmpty.visibility = View.GONE
             if (it.status == Status.SUCCESS) {
-                Log.e("initType", it.data?.result.toString())
-                initAdapter(it.data?.result!!)
+                initAdapter(it.data!!)
             } else if (it.status == Status.ERROR) {
                 toast(it.message)
             }

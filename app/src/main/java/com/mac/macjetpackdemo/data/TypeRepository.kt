@@ -30,23 +30,36 @@ class TypeRepository private constructor(val typeDao: TypeDao, val netWork: MacC
         }
     }
 
-    fun getType(): MutableLiveData<Status<TypeResult>> {
-        val liveData = MutableLiveData<Status<TypeResult>>()
+    fun getType(): MutableLiveData<Status<List<TypeResult.TypeList>>> {
+        val liveData = MutableLiveData<Status<List<TypeResult.TypeList>>>()
         liveData.value = Status.loading(null)
         MacCookExecutors.netWork.execute {
-            netWork.getType(object : Callback<BaseModel<TypeResult>> {
-                override fun onFailure(p0: Call<BaseModel<TypeResult>>, p1: Throwable) {
-                    liveData.postValue(Status.error("获取失败", null))
-                    Log.e("getType", p1.message)
-                }
+            val queryTypeList = typeDao.queryTypeList()
+            if (queryTypeList.isEmpty()) {
+                netWork.getType(object : Callback<BaseModel<TypeResult>> {
+                    override fun onFailure(p0: Call<BaseModel<TypeResult>>, p1: Throwable) {
+                        liveData.postValue(Status.error("获取失败", null))
+                        Log.e("getType", p1.message)
+                    }
 
-                override fun onResponse(p0: Call<BaseModel<TypeResult>>, p1: Response<BaseModel<TypeResult>>) {
-                    liveData.postValue(Status.success(p1.body()?.result))
-                    Log.e("getType", p1.message())
-                }
-            })
+                    override fun onResponse(p0: Call<BaseModel<TypeResult>>, p1: Response<BaseModel<TypeResult>>) {
+                        liveData.postValue(Status.success(p1.body()?.result?.result))
+                        saveToDb(p1)
+                        Log.e("getType", p1.message())
+                    }
+                })
+            } else {
+                Log.e("getType", " 走缓存")
+                liveData.postValue(Status.success(queryTypeList))
+            }
         }
         return liveData
+    }
+
+    fun saveToDb(p1: Response<BaseModel<TypeResult>>) {
+        MacCookExecutors.netWork.execute {
+            typeDao.insertTypeList(p1.body()?.result?.result!!)
+        }
     }
 
     fun getTypeDetail(classId: String, start: String, num: String) {
