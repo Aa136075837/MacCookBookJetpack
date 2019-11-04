@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.mac.macjetpackdemo.data.db.DetailDao
 import com.mac.macjetpackdemo.data.model.BaseModel
 import com.mac.macjetpackdemo.data.model.SearchResult
+import com.mac.macjetpackdemo.data.model.TypeDetail
 import com.mac.macjetpackdemo.net.MacCookNetWork
 import com.mac.macjetpackdemo.net.Status
 import com.mac.macjetpackdemo.util.MacCookExecutors
@@ -46,6 +47,23 @@ class SearchRepository private constructor(val detailDao: DetailDao, val netWork
                 }
             })
 
+        }
+        return liveData
+    }
+
+    fun getTypeDetail(classId: String, start: String, num: String): MutableLiveData<Status<TypeDetail>> {
+        val liveData = MutableLiveData<Status<TypeDetail>>()
+        liveData.value = Status.loading(null)
+        MacCookExecutors.netWork.execute {
+            netWork.getTypeDetail(classId, start, num, object : Callback<BaseModel<TypeDetail>> {
+                override fun onFailure(p0: Call<BaseModel<TypeDetail>>, p1: Throwable) {
+                    liveData.postValue(Status.error("获取失败", null))
+                }
+
+                override fun onResponse(p0: Call<BaseModel<TypeDetail>>, p1: Response<BaseModel<TypeDetail>>) {
+                    liveData.postValue(Status.success(p1.body()?.result))
+                }
+            })
         }
         return liveData
     }

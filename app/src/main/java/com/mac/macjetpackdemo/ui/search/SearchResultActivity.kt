@@ -20,6 +20,8 @@ class SearchResultActivity : BaseActivity() {
 
     companion object {
         const val KEYWORD_KEY = "search_key_word"
+        const val CLASS_ID_KEY = "class_id_key"
+        const val LOAD_TYPE_LEY = "load_type_ley"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,7 +32,11 @@ class SearchResultActivity : BaseActivity() {
             .get(SearchModel::class.java)
         mSearchToolbar.title = intent.getStringExtra(KEYWORD_KEY)
         initAdapter()
-        initData()
+        val loadType = intent.getIntExtra(LOAD_TYPE_LEY, 0)
+        when (loadType) {
+            0 -> initData()
+            1 -> initDataByClassId()
+        }
     }
 
     private fun initAdapter() {
@@ -56,7 +62,22 @@ class SearchResultActivity : BaseActivity() {
                     searchResultAdapter.setData(result.list)
                 }
             } else if (it.status == Status.ERROR) {
-                toast(it.message)
+                mSearchEmpty.show(false, "无该菜品信息", null, null, null)
+            }
+        })
+    }
+
+    private fun initDataByClassId() {
+        mSearchEmpty.show(true, "正在加载...", null, null, null)
+        val liveData = viewModel.getListByClassId(intent.getStringExtra(CLASS_ID_KEY), "0", "30")
+        liveData.observe(this, Observer {
+            if (it.status == Status.SUCCESS) {
+                it.data?.run {
+                    mSearchEmpty.visibility = View.GONE
+                    searchResultAdapter.setData(result?.list!!)
+                }
+            } else if (it.status == Status.ERROR) {
+                mSearchEmpty.show(false, "无该品类信息", null, null, null)
             }
         })
     }

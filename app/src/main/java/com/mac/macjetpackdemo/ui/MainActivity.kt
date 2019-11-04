@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
                 toast("搜索内容不能为空")
             } else {
                 val intent = Intent(this, SearchResultActivity::class.java)
+                intent.putExtra(SearchResultActivity.LOAD_TYPE_LEY, 0)
                 intent.putExtra(SearchResultActivity.KEYWORD_KEY, keyword)
                 startActivity(intent)
             }

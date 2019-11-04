@@ -13,7 +13,7 @@ interface SearchApi {
     @GET("search")
     fun searchCook(
         @Query("keyword") keyword: String,
-        @Query("num") num: String = "30",
+        @Query("num") num: String = "100",
         @Query("appkey") appkey: String = MacCookConstant.JDCLOUD_KEY
     ): Call<BaseModel<SearchResult>>
 

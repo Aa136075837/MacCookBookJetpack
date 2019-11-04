@@ -62,7 +62,7 @@ class TypeRepository private constructor(val typeDao: TypeDao, val netWork: MacC
         }
     }
 
-    fun getTypeDetail(classId: String, start: String, num: String) {
+    fun getTypeDetail(classId: String, start: String, num: String): MutableLiveData<Status<TypeDetail>> {
         val liveData = MutableLiveData<Status<TypeDetail>>()
         liveData.value = Status.loading(null)
         MacCookExecutors.netWork.execute {
@@ -76,5 +76,6 @@ class TypeRepository private constructor(val typeDao: TypeDao, val netWork: MacC
                 }
             })
         }
+        return liveData
     }
 }

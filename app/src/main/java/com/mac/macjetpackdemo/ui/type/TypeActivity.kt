@@ -1,18 +1,17 @@
 package com.mac.macjetpackdemo.ui.type
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.mac.macjetpackdemo.R
 import com.mac.macjetpackdemo.base.BaseActivity
-import com.mac.macjetpackdemo.data.model.Result
 import com.mac.macjetpackdemo.data.model.TypeResult
 import com.mac.macjetpackdemo.net.Status
+import com.mac.macjetpackdemo.ui.search.SearchResultActivity
 import com.mac.macjetpackdemo.util.InjectUtil
 import com.mac.macjetpackdemo.util.toast
-import kotlinx.android.synthetic.main.activity_search_result.*
 import kotlinx.android.synthetic.main.activity_type.*
 
 class TypeActivity : BaseActivity() {
@@ -42,5 +41,21 @@ class TypeActivity : BaseActivity() {
     private fun initAdapter(data: List<TypeResult.TypeList>) {
         val adapter = ExListAdapter(data)
         mExListView.setAdapter(adapter)
+        mExListView.setOnChildClickListener { parent, v, groupPosition, childPosition, id ->
+            click(
+                data[groupPosition].list?.get(
+                    childPosition
+                )
+            )
+        }
+    }
+
+    private fun click(type: TypeResult.TypeList.Type?): Boolean {
+        val intent = Intent(this, SearchResultActivity::class.java)
+        intent.putExtra(SearchResultActivity.LOAD_TYPE_LEY, 1)
+        intent.putExtra(SearchResultActivity.CLASS_ID_KEY, type?.classid)
+        intent.putExtra(SearchResultActivity.KEYWORD_KEY, type?.name)
+        startActivity(intent)
+        return true
     }
 }
