@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Jetpack</string>
+    <string name="app_name">小分队菜单</string>
     <string name="material">用料</string>
     <string name="method">做法</string>
 </resources>
