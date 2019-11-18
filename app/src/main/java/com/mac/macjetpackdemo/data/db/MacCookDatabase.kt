@@ -7,12 +7,16 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.mac.macjetpackdemo.data.model.TypeResult
+import com.mac.macjetpackdemo.demo.DemoDao
+import com.mac.macjetpackdemo.demo.DemoModel
 
 @Database(entities = [TypeResult.TypeList::class], version = 1)
-@TypeConverters(MacCookConverter::class)
+@TypeConverters(MacCookConverter::class, DemoModel::class)
 abstract class MacCookDatabase : RoomDatabase() {
 
     abstract fun getTypeDao(): TypeDao
+
+    abstract fun getDemoDao(): DemoDao
 
     companion object {
         @Volatile

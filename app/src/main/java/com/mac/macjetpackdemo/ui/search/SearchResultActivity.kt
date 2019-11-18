@@ -10,7 +10,6 @@ import com.mac.macjetpackdemo.R
 import com.mac.macjetpackdemo.base.BaseActivity
 import com.mac.macjetpackdemo.net.Status
 import com.mac.macjetpackdemo.util.InjectUtil
-import com.mac.macjetpackdemo.util.toast
 import kotlinx.android.synthetic.main.activity_search_result.*
 
 class SearchResultActivity : BaseActivity() {
