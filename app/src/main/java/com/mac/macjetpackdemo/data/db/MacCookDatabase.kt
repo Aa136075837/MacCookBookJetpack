@@ -10,8 +10,8 @@ import com.mac.macjetpackdemo.data.model.TypeResult
 import com.mac.macjetpackdemo.demo.DemoDao
 import com.mac.macjetpackdemo.demo.DemoModel
 
-@Database(entities = [TypeResult.TypeList::class], version = 1)
-@TypeConverters(MacCookConverter::class, DemoModel::class)
+@Database(entities = [TypeResult.TypeList::class, DemoModel::class], version = 1)
+@TypeConverters(MacCookConverter::class)
 abstract class MacCookDatabase : RoomDatabase() {
 
     abstract fun getTypeDao(): TypeDao

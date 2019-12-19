@@ -14,7 +14,7 @@ android {
     compileSdkVersion 29
     defaultConfig {
         applicationId "com.mac.macjetpackdemo"
-        minSdkVersion 15
+        minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -70,4 +70,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
     //数据库查看工具
     implementation 'com.facebook.stetho:stetho:1.5.1'
+    //lottie
+    implementation 'com.airbnb.android:lottie:3.3.1'
 }
